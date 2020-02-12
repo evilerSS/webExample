@@ -1,6 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import './animation.scss';
 
+
 html,
 body {
   height: 100%;
@@ -16,5 +17,4 @@ body {
   background-size: 100% 100%;
   background-attachment: fixed;
   overflow: auto;
-  animation: bgenlarge 15s;
 }

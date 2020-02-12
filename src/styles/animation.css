@@ -9,3 +9,9 @@
     background-size: 100% 100%;
   }
 }
+.anim-bgenlarge {
+  backface-visibility: hidden;
+  perspective: 1000;
+  background-size: 100% 100%;
+  animation: bgenlarge 15s;
+}
