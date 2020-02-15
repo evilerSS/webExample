@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     filename: "[name].[hash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist")
   },
   module: {
     rules: [{
@@ -20,7 +20,7 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[hash].[ext]",
-            outputPath: './static/img'
+            outputPath: "./static/img"
           }
         }
       },
@@ -31,9 +31,9 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [{
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
-          'css-loader',
+          "css-loader",
           {
             loader: "postcss-loader",
             options: {
@@ -42,27 +42,35 @@ module.exports = {
               }
             }
           },
-          'sass-loader',
+          "sass-loader"
         ]
       },
       {
-        test: require.resolve('jquery'),
+        test: require.resolve("jquery"),
         use: [{
-          loader: 'expose-loader',
-          options: 'jQuery'
-        }, {
-          loader: 'expose-loader',
-          options: '$'
-        }]
+            loader: "expose-loader",
+            options: "jQuery"
+          },
+          {
+            loader: "expose-loader",
+            options: "$"
+          }
+        ]
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
+            presets: ["@babel/preset-env"]
           }
+        }
+      },
+      {
+        test: /\.ts$/,
+        use: {
+          loader: "awesome-typescript-loader"
         }
       }
     ]
@@ -75,5 +83,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css"
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src")
+    }
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
+  }
 };
